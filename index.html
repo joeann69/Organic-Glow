@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Glow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+           <img style="width: 60px; border-radius: 40px;" src="logo.jpg" alt="">
+           <h2>Organic Glow</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home">
+        <div class="hero">
+            <p>Your source for toxin-free, USDA certified organic skincare products.</p>
+        </div>
+    </section>
+    <section id="products">
+        <h2>Our Products</h2>
+        <div class="product-list">
+            <div class="product">
+                <img src="facial cleanser.png" alt="Facial Cleanser">
+                <h3>Facial Cleaner</h3>
+                <p>Hydrating and cleanse your face made with organic ingredients.</p>
+                <h4>P180.00</h4>
+                <button class="add-to-cart-btn" onclick="addToCart('Facial Cleaner', 180)">Add to Cart</button>
+                
+            </div>
+            <div class="product">
+                <img src="serum.png" alt="Serum">
+                <h3>Serum</h3>
+                <p>Revitalizing serum to reduce dark spots and lightened them.</p>
+                <h4>P200.00</h4>
+                <button class="add-to-cart-btn" onclick="addToCart('Serum', 200)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="toner.png" alt="Toner">
+                <h3>Toner</h3>
+                <p>Hydrating and balanced your skin PH levels made with organic ingredients.</p>
+                <h4>P140.00</h4>
+                <button class="add-to-cart-btn" onclick="addToCart('Toner', 140)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="sunblock.png" alt="Sunblock">
+                <h3>Sunblock</h3>
+                <p>Protect your skin from UVA/UVB rays made with organic ingredients.</p>
+                <h4>P190.00</h4>
+                <button class="add-to-cart-btn" onclick="addToCart('Sunblock', 190)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="moisturizing cream.png" alt="Moisturizing Cream">
+                <h3>Moisturizing Cream</h3>
+                <p>Hydrating and nourishing face cream made with organic ingredients.</p>
+                <h4>P230.00</h4>
+                <button class="add-to-cart-btn" onclick="addToCart('Moisturizing Cream', 230)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="soap.png.jpg" alt="Soap">
+                <h3>Soap</h3>
+                <p>Hydrating and cleanse your face made with organic ingredients.</p>
+                <h4>P100.00</h4>
+                <button class="add-to-cart-btn" onclick="addToCart('Soap', 100)">Add to Cart</button>
+            </div>
+
+            <script>
+                // Function to add items to the cart
+                function addToCart(productName, productPrice) {
+                    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            
+                    // Check if the product already exists in the cart
+                    const existingProduct = cart.find(item => item.name === productName);
+                    if (existingProduct) {
+                        existingProduct.quantity += 1; // Increment quantity
+                    } else {
+                        // Add new product to the cart
+                        cart.push({ name: productName, price: productPrice, quantity: 1 });
+                    }
+            
+                    // Save the updated cart to local storage
+                    localStorage.setItem("cart", JSON.stringify(cart));
+            
+                    alert(`${productName} has been added to your cart!`);
+                }
+            
+                // Function to display cart contents
+                function showCartContents() {
+                    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                    if (cart.length === 0) {
+                        alert("Your cart is empty.");
+                        return;
+                    }
+            
+                    let cartDetails = "Cart Contents:\n\n";
+                    cart.forEach(item => {
+                        cartDetails += `- ${item.name} (Price: P${item.price}, Quantity: ${item.quantity})\n`;
+                    });
+            
+                    alert(cartDetails);
+                }
+            </script>
+            
+            
+
+            <!-- Add more products as needed -->
+        </div>
+    </section>
+
+    <button onclick="showCartContents()">Show Cart Contents</button>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>At Organic Glow, we believe in the power of nature to heal and rejuvenate your skin. Our products are made with the finest organic ingredients, ensuring that you get the best care without any harmful chemicals.</p>
+        <div class="mission">
+            <h2>MISSION</h2>
+        <p>Our mission is to provide high-quality, organic skincare products that enhance the natural glow of every skin type, while committing to environmentally friendly practices by using sustainable ingredients and eco-friendly packaging. We aim to continuously innovate and improve our product formulations to ensure the best results for our customers.</p>
+        </div>
+        <div class="vission">
+            <h2>VISION</h2>
+            <p>Our vision for Organic Glow is to become a leading skincare brand that empowers individuals to embrace their natural beauty through sustainable, organic, and effective skincare solutions.</p>
+        </div>
+    </section>
+
+
+    <section class="row">
+        <!-- Video Container -->
+        
+            <video class="custom-video" controls autoplay muted >
+                <source src="video2.mp4" type="video/mp4">
+            </video>
+        
+        <!-- Additional Content (Poster Only) -->
+        <div class="video-container">
+            <img src="poster.jpg" alt="Poster Image" style="width: 100%; border-bottom: 2px solid #ccc;">
+            <p>Our featured product - Natural Skincare Essentials</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form action="submit_form.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+    <footer>
+        <p>© 2024 Organic Glow. All rights reserved.</p>
+    </footer>
+</body>
+</html>
